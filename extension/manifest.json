@@ -1,0 +1,39 @@
+{
+  "name": "Chrome TTS",
+  "version": "1.0",
+  "description": "Read aloud any text on any website!",
+  "manifest_version": 2,
+  "icons": {
+    "150": "default.png"
+  },
+  "browser_action": {
+    "default_icon": "default.png"
+  },
+  "permissions": [
+    "contextMenus",
+    "tts",
+    "storage"
+  ],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["tts2.js"],
+      "css": ["tts.css"]
+    }
+  ],
+  "commands": {
+    "toggle-tts": {
+      "suggested_key": {
+        "default": "Alt+Shift+S"
+      },
+      "description": "Start/Stop Text To Speech"
+    }
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": false
+  }
+}
